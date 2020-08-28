@@ -41,6 +41,7 @@ export class UsuariosComponent implements OnInit {
       forma.value.role
     );
 
+    
     this._usuarioService.actualizarUsuario(usuario)
       .subscribe(res => {
         console.log(res)
