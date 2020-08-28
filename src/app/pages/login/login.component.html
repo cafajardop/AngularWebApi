@@ -1,0 +1,38 @@
+<div class="body">
+    <div class="content">
+        <h1 class="logo">Login </h1>
+
+        <div class="contact-wrapper">
+            <div class="contact-form">
+                <h3>Datos</h3>
+                <form autocomplete="off" ngNativeValidate #f="ngForm" (ngSubmit)="ingresar(f)">
+                    <p class="block">
+                        <label>Email Address</label>
+                        <input [ngModel]="email" name="email" class="form-control" type="email" required placeholder="Correo del usuario">
+                    </p>
+                    <p class="block">
+                        <label>Password</label>
+                        <input ngModel name="password" class="form-control" type="password" required placeholder="Contraseña">
+                    </p>
+                    <p class="block">
+                        <button type="submit">
+                            Ingresar
+                        </button>
+                    </p>
+                </form>
+            </div>
+
+            <div class="contact-info">
+                <h4>More Info</h4>
+                <ul>
+                    <li><i class="fas fa-map-marker-alt"></i>Baker Street</li>
+                    <li><i class="fas fa-phone"></i>111 111 111</li>
+                    <li><i class="fas fa-envelope-open-text"></i>contact@website.com</li>
+                </ul>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente eaque inventore magnam, itaque
+                    perferendis suscipit a laboriosam doloremque enim modi?</p>
+                <p>Company.com</p>
+            </div>
+        </div>
+    </div>
+</div>

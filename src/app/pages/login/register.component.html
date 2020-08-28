@@ -1,0 +1,51 @@
+<div class="body">
+    <div class="content">
+        <h1 class="logo">Registro</h1>
+
+        <div class="contact-wrapper">
+            <div class="contact-form">
+                <h3>Registrate Ahora</h3>
+                <form autocomplete="off" ngNativeValidate [formGroup]="forma" (ngSubmit)="registrarUsuario()" id="loginform" action="index.html">
+                    <p>
+                        <label>Nombres</label>
+                        <input formControlName="nombres" name= "nombres" class="form-control" type="text" required placeholder="Ingrese nombre">
+                    </p>
+                    <p>
+                        <label>Apellidos</label>
+                        <input formControlName="apellidos" name= "apellidos" class="form-control" type="text" required placeholder="Ingrese apellidos">
+                    </p>
+                    <p>
+                        <label>Telefono</label>
+                        <input formControlName="telefono" name= "telefono" class="form-control" type="text" required placeholder="Ingrese telefono">
+                    </p>
+                    <p>
+                        <label>Email</label>
+                        <input formControlName="email" name= "email" class="form-control" type="text" required placeholder="Ingrese email">
+                    </p>
+                    <p>
+                        <label>Password</label>
+                        <input formControlName="password" name= "password" class="form-control" type="password" required>
+                    </p>
+                    
+                    <p class="block">
+                        <button type="submit">
+                            Ingresar
+                        </button>
+                    </p>
+                </form>
+            </div>
+
+            <div class="contact-info">
+                <h4>More Info</h4>
+                <ul>
+                    <li><i class="fas fa-map-marker-alt"></i>Baker Street</li>
+                    <li><i class="fas fa-phone"></i>111 111 111</li>
+                    <li><i class="fas fa-envelope-open-text"></i>contact@website.com</li>
+                </ul>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente eaque inventore magnam, itaque
+                    perferendis suscipit a laboriosam doloremque enim modi?</p>
+                <p>Company.com</p>
+            </div>
+        </div>
+    </div>
+</div>
