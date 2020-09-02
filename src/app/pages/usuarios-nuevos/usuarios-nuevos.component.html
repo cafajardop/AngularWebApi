@@ -1,0 +1,43 @@
+<div class="row animated fadeIn">
+    <div class="col-md-6">
+        <div class="card card-body">
+            <h3 class="box-title m-b-0">Usuario Nuevo</h3>
+            <div class="row">
+                <div class="col-sm-12 col-xs-12">
+                    <form autocomplete="off" #f="ngForm" ngNativeValidate (ngSubmit)="guardarUsuarioNuevo(f)">
+                        <div class="form-group">
+                            <label>Nombres</label>
+                            <input ngModel="" name="nombres" type="text" class="form-control" placeholder="Nombres"
+                                required>
+                        </div>
+                        <div class="form-group">
+                            <label>Apellidos</label>
+                            <input ngModel="" name="apellidos" type="text" class="form-control" placeholder="Apellidos"
+                                required>
+                        </div>
+                        <div class="form-group">
+                            <label>Telefono</label>
+                            <input ngModel="" name="telefono" type="text" class="form-control" placeholder="Telefono"
+                                required>
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input ngModel="" name="email" type="text" class="form-control" placeholder="Email"
+                                required>
+                        </div>
+                        <p>
+                            <label>Password</label>
+                            <input ngModel="" name="password" class="form-control" type="password" required>
+                        </p>
+
+                        <button type="submit" class="btn btn-success waves-effect waves-light m-r-10">
+                            <i class="fa fa-save"></i>
+                            Guardar
+                        </button>
+                        <a routerLink="/usuarios" class="btn btn-inverse waves-effect waves-light">Cancelar</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

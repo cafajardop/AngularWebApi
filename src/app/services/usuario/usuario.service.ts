@@ -13,7 +13,9 @@ import { Observable } from 'rxjs';
 export class UsuarioService {
 
   constructor(public http: HttpClient,
-    public router: Router) { }
+    public router: Router) {
+    this.cargarStorage();
+  }
 
   usuario: UsuarioModel;
   token: string;
@@ -36,7 +38,7 @@ export class UsuarioService {
     localStorage.setItem('id', id);
     localStorage.setItem('token', token);
     localStorage.setItem('usuario', JSON.stringify(usuario));
-    /* localStorage.setItem('menu', JSON.stringify(menu)); */
+    localStorage.setItem('menu', JSON.stringify(menu));
 
     this.usuario = usuario;
     this.token = token;
@@ -60,6 +62,18 @@ export class UsuarioService {
       );
 
   }
+  
+  logout() {
+    this.usuario = null;
+    this.token = '';
+    this.menu = [];
+
+    localStorage.removeItem('token');
+    localStorage.removeItem('usuario');
+    localStorage.removeItem('menu');
+
+    this.router.navigate(['/login']);
+  }
 
   crearUsuario(usuario: UsuarioModel) {
     let headers = new Headers();
@@ -80,23 +94,42 @@ export class UsuarioService {
       );
   }
 
-  actualizarUsuario(usuario: UsuarioModel) {
+  cargarUsuarios() {
     this.cargarStorage();
 
-    let url = URL_SERVICIOS + '/usuario/' + this.usuario._id;
-    url += '?token=' + this.token; 
-    
-    console.log(url);
+    let url = URL_SERVICIOS + '/usuario?token=' + this.token;
+    return this.http.get(url);
+  }
+
+  cargarUsuario(id: string) {
+    let url = URL_SERVICIOS + '/usuario/' + id;
+    return this.http.get(url)
+      .pipe(
+        map((resp: any) => resp.usuario)
+      );
+  }
+
+  actualizarUsuario(usuario: UsuarioModel, id: string) {
+    this.cargarStorage();
+
+    let url = URL_SERVICIOS + '/usuario/' + id;
+    url += '?token=' + this.token;
+
 
     return this.http.put(url, usuario)
       .pipe(
         map((resp: any) => {
-          if (usuario._id === this.usuario._id) {
-            let usuarioDB: UsuarioModel = resp.usuario;
-            this.guardarStorage(usuarioDB._id, this.token, usuarioDB, this.menu);
+          if (resp.ok === false) {
+            Swal.fire('Usuario No Actualizado', resp.err.message, 'error');
           }
-          Swal.fire('Usuario actualizado', usuario.nombres, 'success');
-          return true;
+          else {
+            if (usuario._id === this.usuario._id) {
+              let usuarioDB: UsuarioModel = resp.usuario;
+              this.guardarStorage(usuarioDB._id, this.token, usuarioDB, this.menu);
+            }
+            Swal.fire('Usuario actualizado', usuario.nombres, 'success');
+            return true;
+          }
         }),
         catchError(err => {
           console.log(err);
@@ -104,5 +137,28 @@ export class UsuarioService {
           return Observable.throw(err.status);
         })
       );
+  }
+
+
+  borrarUsuario(id: string) {
+    let url = URL_SERVICIOS + '/usuario/' + id;
+    url += '?token=' + this.token;
+
+    return this.http.delete(url)
+      .pipe(
+        map((resp: any) => {
+
+          if (resp.ok === false) {
+            Swal.fire('Usuario No borrado', resp.err.message, 'error');
+          }
+          else {
+            Swal.fire('Usuario borrado', 'El usuario a sido eliminado correctamente', 'success');
+            return true;
+          }
+        }),
+        catchError(err => {
+          console.log(err);
+          return Observable.throw(err.status);
+        }));
   }
 }

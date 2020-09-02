@@ -30,10 +30,7 @@ export class RegisterComponent implements OnInit {
   }
 
   registrarUsuario() {
-    console.log(this.forma);
-
     if (this.forma.invalid) { return; }
-    console.log(this.forma.value);
 
     /* if (!this.forma.value.condiciones){
       Swal.fire('Importante','Debe de aceptar las condiciones','warning');
