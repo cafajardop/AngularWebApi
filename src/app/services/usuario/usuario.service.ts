@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { map, catchError } from 'rxjs/operators';
 import Swal from 'sweetalert2';
 import { Observable } from 'rxjs';
+import { SubirArchivoService } from '../service.index';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,8 @@ import { Observable } from 'rxjs';
 export class UsuarioService {
 
   constructor(public http: HttpClient,
-    public router: Router) {
+    public router: Router,
+    public _subirArchivoService: SubirArchivoService) {
     this.cargarStorage();
   }
 
@@ -50,7 +52,6 @@ export class UsuarioService {
     return this.http.post(url, usuario)
       .pipe(
         map((resp: any) => {
-          console.log(resp);
           this.guardarStorage(usuario._id, resp.token, resp.usuario, resp.menu);
           return true;
         }),
@@ -60,6 +61,19 @@ export class UsuarioService {
           return Observable.throw(err.status);
         })
       );
+
+  }
+
+  loginGoogle(token: string) {
+    let url = URL_SERVICIOS + '/google';
+    console.log(url);
+    
+    return this.http.post(url, {token })
+      .pipe(
+        map((resp: any) => {
+          this.guardarStorage(resp.id, resp.token, resp.usuario, resp.menu);
+          return true;
+        }));
 
   }
   
@@ -87,17 +101,14 @@ export class UsuarioService {
           return resp.usuario;
         }),
         catchError(err => {
-          console.log(err);
-          Swal.fire(err.error.mensaje, err.error.errors.message, 'error')
+          Swal.fire(err.error.mensaje,'Usuario ya existe debe ingresar otro!!' , 'error')
           return Observable.throw(err.status);
         })
       );
   }
 
-  cargarUsuarios() {
-    this.cargarStorage();
-
-    let url = URL_SERVICIOS + '/usuario?token=' + this.token;
+  cargarUsuarios(desde: number = 0) {
+    let url = URL_SERVICIOS + '/usuario?desde=' + desde;
     return this.http.get(url);
   }
 
@@ -111,7 +122,12 @@ export class UsuarioService {
 
   actualizarUsuario(usuario: UsuarioModel, id: string) {
     this.cargarStorage();
-
+    if(id === ''){
+      id = this.usuario._id;
+    }
+    
+    console.log(usuario);
+    
     let url = URL_SERVICIOS + '/usuario/' + id;
     url += '?token=' + this.token;
 
@@ -139,6 +155,16 @@ export class UsuarioService {
       );
   }
 
+  cambiarImagen(archivo: File, id: string) {
+    this._subirArchivoService.subirArchivo(archivo, 'usuarios', id)
+      .then((resp: any) => {
+        this.usuario.img = resp.usuario.img;
+        Swal.fire('Imagen Actualizada', this.usuario.nombres, 'success');
+        this.guardarStorage(id, this.token, this.usuario, this.menu);
+      })
+      .catch(resp => {        
+      });
+  }
 
   borrarUsuario(id: string) {
     let url = URL_SERVICIOS + '/usuario/' + id;

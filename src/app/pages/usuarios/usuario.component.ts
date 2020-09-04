@@ -37,6 +37,8 @@ export class UsuarioComponent implements OnInit {
     this._usuarioService.cargarUsuario(id)
       .subscribe(usuario => {
         this.usuario = usuario;
+        console.log(this.usuario);
+        
       });
   }
 

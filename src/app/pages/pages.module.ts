@@ -12,6 +12,7 @@ import { PagesRoutingModule } from './pages-routing.module';
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
 import { PipesModule } from '../pipes/pipes.module';
 import { UsuariosNuevosComponent } from './usuarios-nuevos/usuarios-nuevos.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { UsuariosNuevosComponent } from './usuarios-nuevos/usuarios-nuevos.compo
     FooterComponent,
     NavbarComponent,
     AccountSettingsComponent,
-    UsuariosNuevosComponent
+    UsuariosNuevosComponent,
+    ProfileComponent
   ],
   imports: [
     CommonModule,
