@@ -13,6 +13,7 @@ import { AccountSettingsComponent } from './account-settings/account-settings.co
 import { PipesModule } from '../pipes/pipes.module';
 import { UsuariosNuevosComponent } from './usuarios-nuevos/usuarios-nuevos.component';
 import { ProfileComponent } from './profile/profile.component';
+import { CardsusersComponent } from './usuarios-nuevos/cardsusers.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { ProfileComponent } from './profile/profile.component';
     NavbarComponent,
     AccountSettingsComponent,
     UsuariosNuevosComponent,
-    ProfileComponent
+    ProfileComponent,
+    CardsusersComponent
   ],
   imports: [
     CommonModule,

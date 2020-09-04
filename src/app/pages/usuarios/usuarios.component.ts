@@ -71,12 +71,12 @@ export class UsuariosComponent implements OnInit {
     }
     this.cargando = true;
 
-    /* this._usuarioService.buscarUsuarios(termino)
-      .subscribe((usuarios: Usuario[]) => {
+    this._usuarioService.buscarUsuarios(termino)
+      .subscribe((usuarios: UsuarioModel[]) => {
         // console.log(usuarios);
         this.usuarios = usuarios;
         this.cargando = false;
-      }); */
+      });
   }
   borrarUsuario(usuario: UsuarioModel, id:string) {
     if (usuario._id === this._usuarioService.usuario._id) {

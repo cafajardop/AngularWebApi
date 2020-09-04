@@ -67,8 +67,8 @@ export class UsuarioService {
   loginGoogle(token: string) {
     let url = URL_SERVICIOS + '/google';
     console.log(url);
-    
-    return this.http.post(url, {token })
+
+    return this.http.post(url, { token })
       .pipe(
         map((resp: any) => {
           this.guardarStorage(resp.id, resp.token, resp.usuario, resp.menu);
@@ -76,7 +76,7 @@ export class UsuarioService {
         }));
 
   }
-  
+
   logout() {
     this.usuario = null;
     this.token = '';
@@ -101,7 +101,7 @@ export class UsuarioService {
           return resp.usuario;
         }),
         catchError(err => {
-          Swal.fire(err.error.mensaje,'Usuario ya existe debe ingresar otro!!' , 'error')
+          Swal.fire(err.error.mensaje, 'Usuario ya existe debe ingresar otro!!', 'error')
           return Observable.throw(err.status);
         })
       );
@@ -122,12 +122,12 @@ export class UsuarioService {
 
   actualizarUsuario(usuario: UsuarioModel, id: string) {
     this.cargarStorage();
-    if(id === ''){
+    if (id === '') {
       id = this.usuario._id;
     }
-    
+
     console.log(usuario);
-    
+
     let url = URL_SERVICIOS + '/usuario/' + id;
     url += '?token=' + this.token;
 
@@ -162,8 +162,15 @@ export class UsuarioService {
         Swal.fire('Imagen Actualizada', this.usuario.nombres, 'success');
         this.guardarStorage(id, this.token, this.usuario, this.menu);
       })
-      .catch(resp => {        
+      .catch(resp => {
       });
+  }
+
+  buscarUsuarios(termino: string) {
+    let url = URL_SERVICIOS + '/todo/' + termino;
+    return this.http.get(url)
+      .pipe(
+        map((resp: any) => resp.usuarios));
   }
 
   borrarUsuario(id: string) {
