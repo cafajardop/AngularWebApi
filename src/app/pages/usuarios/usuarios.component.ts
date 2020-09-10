@@ -14,7 +14,6 @@ import { ModalUploadService } from 'src/app/components/modal-upload/modal-upload
 })
 export class UsuariosComponent implements OnInit {
 
-
   usuarios: UsuarioModel[] = [];
   desde: number = 0;
   totalRegistros: number = 0;
@@ -22,7 +21,6 @@ export class UsuariosComponent implements OnInit {
   iduser:string;  
   usuarioRole: UsuarioModel;
   role:string;
-
 
   constructor(
     public _usuarioService: UsuarioService,
@@ -63,6 +61,7 @@ export class UsuariosComponent implements OnInit {
     this.desde += valor;
     this.cargarUsuarios();
   }
+
   buscarUsuario(termino: string) {
     // console.log (termino);
     if (termino.length <= 0) {
@@ -78,6 +77,7 @@ export class UsuariosComponent implements OnInit {
         this.cargando = false;
       });
   }
+
   borrarUsuario(usuario: UsuarioModel, id:string) {
     if (usuario._id === this._usuarioService.usuario._id) {
       Swal.fire('No puede borrar usuario', 'No se puede borrar a si mismo', 'error');

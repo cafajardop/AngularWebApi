@@ -19,8 +19,8 @@ export class ImagenPipe implements PipeTransform {
       case 'usuario':
         url += '/usuarios/' + img;
         break;
-      case 'medico':
-        url += '/medicos/' + img;
+      case 'curso':
+        url += '/cursos/' + img;
         break;
       case 'hospital':
         url += '/hospitales/' + img;
@@ -28,7 +28,7 @@ export class ImagenPipe implements PipeTransform {
       default:
         console.log('tipo de imagen no exite, usuario, medicos, hospitales');
         url += '/usuarios/xxx';    
-    }
+    }   
     return url;
   }
 }

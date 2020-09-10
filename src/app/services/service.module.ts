@@ -7,7 +7,8 @@ import {
   SettingsService,
   SidebarService,
   SharedService,
-  UsuarioService
+  UsuarioService,
+  CursoService
 }from "./service.index";
 
 
@@ -21,6 +22,7 @@ import {
     SidebarService,
     SharedService,
     UsuarioService,
+    CursoService,
     ModalUploadService,
   ],
   declarations: [],

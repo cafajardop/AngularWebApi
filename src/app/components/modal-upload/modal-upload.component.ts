@@ -61,7 +61,5 @@ export class ModalUploadComponent implements OnInit {
         console.log(err);
         
       });
-
-
   }
 }

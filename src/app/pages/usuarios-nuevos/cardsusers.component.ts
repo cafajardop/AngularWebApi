@@ -43,6 +43,4 @@ export class CardsusersComponent implements OnInit {
     this.desde += valor;
     this.cargarUsuarios();
   }
-  
-
 }

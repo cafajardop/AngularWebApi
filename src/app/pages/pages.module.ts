@@ -14,6 +14,11 @@ import { PipesModule } from '../pipes/pipes.module';
 import { UsuariosNuevosComponent } from './usuarios-nuevos/usuarios-nuevos.component';
 import { ProfileComponent } from './profile/profile.component';
 import { CardsusersComponent } from './usuarios-nuevos/cardsusers.component';
+import { CursosComponent } from './cursos/cursos.component';
+import { CursoComponent } from './cursos/curso.component';
+import { CursoNuevoComponent } from './cursos/curso-nuevo.component';
+import { CardscoursesComponent } from './cursos/cardscourses.component';
+import { ViewcoursesComponent } from './cursos/viewcourses/viewcourses.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +30,12 @@ import { CardsusersComponent } from './usuarios-nuevos/cardsusers.component';
     AccountSettingsComponent,
     UsuariosNuevosComponent,
     ProfileComponent,
-    CardsusersComponent
+    CardsusersComponent,
+    CursosComponent,
+    CursoComponent,
+    CursoNuevoComponent,
+    CardscoursesComponent,
+    ViewcoursesComponent
   ],
   imports: [
     CommonModule,
