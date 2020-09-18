@@ -19,6 +19,16 @@ import { CursoComponent } from './cursos/curso.component';
 import { CursoNuevoComponent } from './cursos/curso-nuevo.component';
 import { CardscoursesComponent } from './cursos/cardscourses.component';
 import { ViewcoursesComponent } from './cursos/viewcourses/viewcourses.component';
+import { CategoriaComponent } from './categoria/categoria.component';
+import { CategoriasComponent } from './categoria/categorias.component';
+import { CategoriaNuevaComponent } from './categoria/categoria-nueva/categoria-nueva.component';
+import { CardsCategoriaComponent } from './categoria/cards-categoria/cards-categoria.component';
+import { CardsviewcoursesComponent } from './cursos/viewcourses/cardsviewcourses.component';
+import { SubcategoriasComponent } from './subcategorias/subcategorias.component';
+import { SubcategoriaComponent } from './subcategorias/subcategoria.component';
+import { SubcategoriaNuevaComponent } from './subcategorias/subcategoria-nueva/subcategoria-nueva.component';
+import { CardsSubcategoriaComponent } from './categoria/cards-categoria/cards-subcategoria.component';
+
 
 @NgModule({
   declarations: [
@@ -35,7 +45,16 @@ import { ViewcoursesComponent } from './cursos/viewcourses/viewcourses.component
     CursoComponent,
     CursoNuevoComponent,
     CardscoursesComponent,
-    ViewcoursesComponent
+    ViewcoursesComponent,
+    CategoriaComponent,
+    CategoriasComponent,
+    CategoriaNuevaComponent,
+    CardsCategoriaComponent,
+    CardsviewcoursesComponent,
+    SubcategoriasComponent,
+    SubcategoriaComponent,
+    SubcategoriaNuevaComponent,
+    CardsSubcategoriaComponent
   ],
   imports: [
     CommonModule,

@@ -1,3 +1,18 @@
+<h1>Cursos</h1>
+<div class="row animated fadeIn">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+
+                <input #input (keyup)="buscarClave(input.value)" type="text" class="form-control"
+                    placeholder="Buscar por clave...">
+
+            </div>
+        </div>
+    </div>
+</div>
+<a routerLink="/cardsCategorias" class="btn btn-inverse waves-effect waves-light">Volver</a>
+<hr>
 <div class="row animated fadeIn" *ngIf="cargando">
     <div class="col-sm-12">
         <div class="alert alert-warning text-center">
@@ -15,15 +30,15 @@
             <h3><strong>{{curso.nombre}}</strong></h3>
             <img [src]="curso.img | imagen:'curso'" width="35%" height="100px">
             <p class="text-justify mt-2 mb-4">{{curso.descripcion}}</p>
-            <a [routerLink]="['/viewCourses', curso._id]">Review</a>
+            <a [routerLink]="['/viewCourses', curso._id]">Estudiar</a>
         </article>
     </div>
-    <div class="col-sm-12 mt-5 text-center">
+    <!-- <div class="col-sm-12 mt-5 text-center">
         <button (click)="cambiarDesde(-5)" class="btn btn-danger mr-2">
             Anteriores
         </button>
         <button (click)="cambiarDesde(5)" class="btn btn-danger">
             Siguientes
         </button>
-    </div>
+    </div> -->
 </div>

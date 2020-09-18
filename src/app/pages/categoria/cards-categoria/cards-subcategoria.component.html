@@ -1,0 +1,68 @@
+<div class="row animated fadeIn">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+
+                <input #input (keyup)="buscarSubcategoria(input.value)" type="text" class="form-control"
+                    placeholder="Buscar Subcategoria...">
+
+            </div>
+        </div>
+    </div>
+</div>
+<a routerLink="/cardsCategorias" class="btn btn-inverse waves-effect waves-light">Volver</a>
+<hr>
+<div class="row animated fadeIn" *ngIf="cargando">
+    <div class="col-sm-12">
+        <div class="alert alert-warning text-center">
+            <strong>Cargando</strong>
+            <br>
+            <i class="fa fa-refresh fa-spin fa-2x"></i>
+            <br>
+            <span>Espere por favor</span>
+        </div>
+    </div>
+</div>
+
+<!-- <div *ngIf="subcategorias" class="alert alert-success animated fadeIn">
+    <h3>No hay registros</h3>    
+</div>
+ -->
+<div class="row animated fadeIn" *ngIf="!cargando">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h3 class="card-title">Sub-Categorias</h3>
+
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Categoria</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr *ngFor="let subcategoria of subcategorias">
+                            <td>{{subcategoria.nombre}}</td>
+                            <td>{{subcategoria.categoria}}</td>
+                            <td>
+                                <button [routerLink]="['/cardsviewCourses', subcategoria._id]"
+                                    class="btn btn-primary mr-2">
+                                    <i class="fa fa-eye-slash"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button (click)="cambiarDesde(-5)" class="btn btn-secondary mr-2">
+                    Anteriores
+                </button>
+                <button (click)="cambiarDesde(5)" class="btn btn-secondary">
+                    Siguientes
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

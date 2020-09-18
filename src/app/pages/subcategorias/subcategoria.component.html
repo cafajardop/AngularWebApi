@@ -1,0 +1,35 @@
+<div class="row animated fadeIn">
+    <div class="col-md-6">
+        <div class="card card-body">
+            <h3 class="box-title m-b-0">Sub-Categoria: {{subcategoria.nombre}}</h3>
+            <div class="row">
+                <div class="col-sm-12 col-xs-12">
+                    <form #f="ngForm" ngNativeValidate (ngSubmit)="guardarSubCategoria(f)">
+                        <div class="form-group">
+                            <label>Nombre</label>
+                            <input [(ngModel)]="subcategoria.nombre" name="nombre" type="text" class="form-control"
+                                placeholder="Nombre" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Categoria</label>
+                            <select (change)="subcategoria.categoria" [(ngModel)]="subcategoria.categoria" name="tipo" class="form-control" required>
+                                <option *ngFor="let categoria of categorias" [value]="categoria._id">{{categoria.nombre}}</option>
+                            </select>
+                        </div>                            
+                        <button type="submit" class="btn btn-success waves-effect waves-light m-r-10">
+                            <i class="fa fa-save"></i>
+                            Guardar
+                        </button>
+                        <a routerLink="/subcategorias" class="btn btn-inverse waves-effect waves-light">Cancelar</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <h2 class="box-title m-b-0">Example</h2>
+        <hr>
+        <p>Nombre REACT</p> 
+        <p>Codigo FE_REACT</p>
+    </div>
+</div>

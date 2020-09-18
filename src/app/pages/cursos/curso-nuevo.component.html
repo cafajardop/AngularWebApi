@@ -11,9 +11,12 @@
                                 required>
                         </div>
                         <div class="form-group">
-                            <label>Código</label>
-                            <pre>Este es mi codigo</pre>
-                        </div>
+                            <label>Categoria</label>
+                            <select (change)="curso.subCategoria" [(ngModel)]="curso.subCategoria" name="tipo" class="form-control" required>
+                                <option *ngFor="let subcategoria of subcategoria" [value]="subcategoria._id">{{subcategoria.nombre}}</option>
+                            </select>
+                        </div>                            
+
                         <button type="submit" class="btn btn-success waves-effect waves-light m-r-10">
                             <i class="fa fa-save"></i>
                             Guardar

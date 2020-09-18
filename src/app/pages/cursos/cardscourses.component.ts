@@ -27,8 +27,7 @@ export class CardscoursesComponent implements OnInit {
       .subscribe((resp: any) => {
         this.totalRegistros = resp.total;
         this.cursos = resp.cursos;        
-        this.cargando = false;
-        console.log(this.cursos);        
+        this.cargando = false;        
       });
   }
 
@@ -44,6 +43,4 @@ export class CardscoursesComponent implements OnInit {
     this.desde += valor;
     this.cargarCursos();
   }
-  
-
 }

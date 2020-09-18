@@ -30,8 +30,7 @@ export class ViewcoursesComponent implements OnInit {
     this.idUser = id;
     this._cursoService.cargarCurso(id)
       .subscribe(curso => {
-        this.curso = curso;
-        console.log(curso);
+        this.curso = curso;        
       });
   }
 

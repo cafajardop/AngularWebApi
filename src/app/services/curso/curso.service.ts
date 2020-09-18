@@ -22,7 +22,15 @@ export class CursoService {
 
   cargarCurso(id: string) {
     let url = URL_SERVICIOS + '/curso/' + id;
-    console.log(url);
+    
+    return this.http.get(url)
+      .pipe(
+        map((resp: any) => resp.curso)
+      );
+  }
+
+  cargarCursoCategoria(id: string) {
+    let url = URL_SERVICIOS + '/cursoView/' + id;
     
     return this.http.get(url)
       .pipe(
@@ -70,7 +78,6 @@ actualizarCurso(curso: CursoModel, id: string) {
           }
         }),
         catchError(err => {
-          console.log(err);
           Swal.fire(err, err, 'error')
           return Observable.throw(err.status);
         })
@@ -93,7 +100,6 @@ actualizarCurso(curso: CursoModel, id: string) {
           }
         }),
         catchError(err => {
-          console.log(err);
           return Observable.throw(err.status);
         }));
   }

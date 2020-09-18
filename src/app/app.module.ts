@@ -13,6 +13,7 @@ import { APP_ROUTES } from './app-routing.module';
 import { ModalUploadComponent } from './components/modal-upload/modal-upload.component';
 import { PipesModule } from './pipes/pipes.module';
 import { ServiceModule } from './services/service.module';
+import { LoadingComponent } from './components/loading/loading/loading.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { ServiceModule } from './services/service.module';
     LoginComponent,
     RegisterComponent,
     PagesComponent,
-    ModalUploadComponent
+    ModalUploadComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,

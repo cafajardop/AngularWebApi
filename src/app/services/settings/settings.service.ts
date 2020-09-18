@@ -1,5 +1,6 @@
 import { Injectable, Inject } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
+import { Title } from '@angular/platform-browser';
 
 @Injectable({
   providedIn: 'root'
@@ -8,8 +9,8 @@ export class SettingsService {
 
   ajustes: Ajustes = {
 
-    temaUrl: 'assets/css/colors/default.css',
-    tema: 'default'
+    temaUrl: 'assets/css/colors/megna-dark.css',
+    tema: 'megna-dark'
   }
 
   constructor(@Inject(DOCUMENT) private _document) {

@@ -1,0 +1,131 @@
+img {
+    max-width: 100%;
+}
+
+h1 {
+    font-size: 2rem;
+}
+
+h2 {
+    font-size: 2rem;
+}
+
+p {
+    font-size: 1rem;
+}
+
+.header{
+    display: grid;
+    grid-template-columns: repeat(7,1fr);
+    grid-template-rows: repeat(1,auto);
+    grid-template-areas: "title0  title0  title0  title title title button";
+    
+    align-items: center;
+}
+
+.title0 {
+    color: red;
+    grid-area: title0;
+}
+
+.title {
+    color: red;
+    grid-area: title;
+}
+
+.header .button {
+    grid-area: button;
+    color: #fff;
+}
+
+.entrada-blog a {
+    display: inline-block;
+    background-color: #2196F3;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+
+.contenedor {
+    max-width: 1200px;
+    width: 95%;
+    margin: 0 auto;
+}
+
+@media (min-width:768px) {
+    .dos-columnas {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        column-gap: 2rem;
+    }
+}
+
+@media (min-width: 600px) {
+    .contenedor {
+        width: 80%;
+    }
+}
+
+@media (min-width:768px) {
+    .contenedor {
+        width: 90%;
+    }
+}
+
+@media(min-width:768px){
+    .contenedor-grid {
+        display: grid;
+        /*Primera forma*/
+        /* grid-template-columns: 700px repeat(2,1fr); */
+        /*Segunda forma*/
+        /* grid-template-columns: 60% 20% 20%; */
+        /*Tercera forma*/
+        grid-template-columns: 3fr repeat(2,1fr);
+        /*Espaciado entre columnas*/
+        column-gap: 2rem;
+    }
+
+}
+/*Para telefonos*/
+@media(min-width:480px){
+    .column-drop-css{
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        /*si quiero aplicarla column y en row coloco gap*/
+        gap: 2rem;
+    }
+    .segunda{
+        grid-column: 1/3;
+    }
+    /* .tercera{
+        grid-column: 1/2;
+    } */
+}
+@media(min-width:768px){
+    .column-drop-css{
+        /*Puedo heredar el display grid por eso no lo coloco*/
+        grid-template-columns: repeat(4,1fr);
+    }
+    .segunda{
+        grid-column: 3/4;
+    }
+}
+
+@media(min-width:768px){
+    .con-sidebar{
+        display: grid;
+        grid-template-columns: 1fr 3fr ;
+        column-gap: 4rem;
+    }
+    .asideSidebar {
+        grid-column: 1/2;
+        grid-row: 1/2;
+    }
+    .articleSidebar {
+        grid-column: 2/3;
+    }
+
+}

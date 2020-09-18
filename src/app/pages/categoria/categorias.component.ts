@@ -1,50 +1,42 @@
 import { Component, OnInit } from '@angular/core';
-import { CursoModel } from 'src/app/models/cursoModel';
-import { CursoService } from 'src/app/services/service.index';
 import { ModalUploadService } from 'src/app/components/modal-upload/modal-upload.service';
+import { CategoriaModel } from 'src/app/models/categoriaModel';
+import { CategoriaService } from 'src/app/services/categoria/categoria.service';
 import Swal from 'sweetalert2';
 
-
 @Component({
-  selector: 'app-cursos',
-  templateUrl: './cursos.component.html',
-  styleUrls: ['./cursos.component.css']
+  selector: 'app-categorias',
+  templateUrl: './categorias.component.html',
+  styleUrls: ['./categorias.component.css']
 })
+export class CategoriasComponent implements OnInit {
 
-export class CursosComponent implements OnInit {
-
-  
-  cursos: CursoModel[] = [];
+  categorias: CategoriaModel[] = [];
   desde: number = 0;
   totalRegistros: number = 0;
   cargando: boolean = true;
   iduser: string;
 
   constructor(
-    public _cursoService: CursoService,
-    public _modalUploadService: ModalUploadService,
-    
+    public _categoriaService: CategoriaService,
+    public _modalUploadService: ModalUploadService
   ) { }
 
-  ngOnInit() {    
-    this.cargarCursos();
+  ngOnInit() {
+    this.cargarCategorias();
     this._modalUploadService.notificacion
-      .subscribe(() => this.cargarCursos());
+      .subscribe(resp => this.cargarCategorias()); 
   }
 
   mostrarModal(id: string) {
-    this._modalUploadService.mostrarModal('cursos', id);
+    this._modalUploadService.mostrarModal('categorias', id);
   }
-
   
-
-
-  borrarCurso(curso: CursoModel, id: string) {
-    console.log(id);
+  borrarCategoria(categoria: CategoriaModel, id: string) {
     
     Swal.fire({
       title: '¿Esta seguro?',
-      text: `Esta a punto de borrar al usuario: ${curso.nombre}`,
+      text: `Esta a punto de borrar categoria: ${categoria.nombre}`,
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
@@ -52,9 +44,9 @@ export class CursosComponent implements OnInit {
       confirmButtonText: 'Si, Borrar!'
     }).then((result) => {
       if (result.value) {
-        this._cursoService.borrarCurso(curso._id)
+        this._categoriaService.borrarCategoria(categoria._id)
           .subscribe(borrado => {
-            this.cargarCursos();
+            this.cargarCategorias();
           });
         Swal.fire(
           'Deleted!',
@@ -65,13 +57,13 @@ export class CursosComponent implements OnInit {
     })
   }
 
-  cargarCursos() {
+  cargarCategorias() {
     this.cargando = true;
-    this._cursoService.cargarCursos(this.desde)
+    this._categoriaService.cargarCategorias(this.desde)
       .subscribe((resp: any) => {       
         this.totalRegistros = resp.total;
-        this.cursos = resp.cursos;
-        this.cargando = false;
+        this.categorias = resp.categorias;
+        this.cargando = false;        
       });
   }
 
@@ -85,21 +77,21 @@ export class CursosComponent implements OnInit {
       return;
     }
     this.desde += valor;
-    this.cargarCursos();
+    this.cargarCategorias();
   }
 
-  buscarCursos(termino: string) {
+  buscarCategorias(termino: string) {
     // console.log (termino);
     if (termino.length <= 0) {
-      this.cargarCursos();
+      this.cargarCategorias();
       return;
     }
     this.cargando = true;
 
-    this._cursoService.buscarCursos(termino)
-      .subscribe((cursos: CursoModel[]) => {
+    this._categoriaService.buscarCategoria(termino)
+      .subscribe((categorias: CategoriaModel[]) => {
         // console.log(usuarios);
-        this.cursos = cursos;
+        this.categorias = categorias;
         this.cargando = false;
       });
   }

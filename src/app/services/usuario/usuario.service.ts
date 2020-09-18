@@ -22,12 +22,13 @@ export class UsuarioService {
   usuario: UsuarioModel;
   token: string;
   menu: any[] = [];
+  ajustes : string
 
   cargarStorage() {
     if (localStorage.getItem('token')) {
       this.token = localStorage.getItem('token');
       this.usuario = JSON.parse(localStorage.getItem('usuario'));
-      /* this.menu = JSON.parse(localStorage.getItem('menu')); */
+      this.menu = JSON.parse(localStorage.getItem('menu'));      
 
     } else {
       this.token = '';
@@ -56,7 +57,6 @@ export class UsuarioService {
           return true;
         }),
         catchError(err => {
-          console.log(err.error.mensaje);
           Swal.fire('Error en el login', err.error.mensaje, 'error')
           return Observable.throw(err.status);
         })
@@ -66,7 +66,6 @@ export class UsuarioService {
 
   loginGoogle(token: string) {
     let url = URL_SERVICIOS + '/google';
-    console.log(url);
 
     return this.http.post(url, { token })
       .pipe(
@@ -125,9 +124,6 @@ export class UsuarioService {
     if (id === '') {
       id = this.usuario._id;
     }
-
-    console.log(usuario);
-
     let url = URL_SERVICIOS + '/usuario/' + id;
     url += '?token=' + this.token;
 
@@ -148,7 +144,6 @@ export class UsuarioService {
           }
         }),
         catchError(err => {
-          console.log(err);
           Swal.fire(err, err, 'error')
           return Observable.throw(err.status);
         })
@@ -190,7 +185,6 @@ export class UsuarioService {
           }
         }),
         catchError(err => {
-          console.log(err);
           return Observable.throw(err.status);
         }));
   }

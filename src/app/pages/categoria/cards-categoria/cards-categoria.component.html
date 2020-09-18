@@ -1,0 +1,42 @@
+<div class="row animated fadeIn">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+
+                <input #input (keyup)="buscarTecnologia(input.value)" type="text" class="form-control"
+                    placeholder="Buscar tecnologia...">
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row animated fadeIn" *ngIf="cargando">
+    <div class="col-sm-12">
+        <div class="alert alert-warning text-center">
+            <strong>Cargando</strong>
+            <br>
+            <i class="fa fa-refresh fa-spin fa-2x"></i>
+            <br>
+            <span>Espere por favor</span>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="contenedor dos-columnas">
+        <article *ngFor="let categoria of categorias" class="entrada-blog">
+            <h3><strong>{{categoria.nombre}}</strong></h3>
+            <img [src]="categoria.img | imagen:'categoria'" width="35%" height="100px">
+            <p class="text-justify mt-2 mb-4">{{categoria.codigo}}</p>
+            <!-- <button class="btn btn-primary mb-4" [routerLink]="['/cardsviewCourses', categoria._id]">Review</button> -->
+            <button class="btn btn-primary mb-4" [routerLink]="['/cardsSubCategorias', categoria._id]">Review</button>
+        </article>
+    </div>
+    <div class="col-sm-12 mt-5 text-center">
+        <button (click)="cambiarDesde(-6)" class="btn btn-danger mr-2">
+            Anteriores
+        </button>
+        <button (click)="cambiarDesde(6)" class="btn btn-danger">
+            Siguientes
+        </button>
+    </div>
+</div>
