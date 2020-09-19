@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { URL_SERVICIOS } from 'src/app/config/config';
+import { URL_SERVICIOS } from '../../../assets/config/config';
 import { UsuarioModel } from 'src/app/models/usuarioModel';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';

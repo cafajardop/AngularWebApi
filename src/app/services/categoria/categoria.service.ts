@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { URL_SERVICIOS } from 'src/app/config/config';
+import { URL_SERVICIOS } from '../../../assets/config/config';
 import { CategoriaModel } from 'src/app/models/categoriaModel';
 import { map, catchError } from 'rxjs/operators';
 import Swal from 'sweetalert2';
