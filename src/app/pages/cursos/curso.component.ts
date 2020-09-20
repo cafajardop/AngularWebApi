@@ -68,6 +68,7 @@ export class CursoComponent implements OnInit {
     if (f.invalid) {
       return;
     }
+
     this._cursoService.actualizarCurso(this.curso, this.idUser)
       .subscribe(() => {
         this.router.navigate(['/cursos']);
